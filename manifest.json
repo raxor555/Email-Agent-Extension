@@ -1,0 +1,14 @@
+{
+  "manifest_version": 3,
+  "name": "Premium Email Sender",
+  "version": "1.0",
+  "description": "Send highlighted emails with style via n8n.",
+  "permissions": ["contextMenus", "storage", "scripting", "activeTab"],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  }
+}

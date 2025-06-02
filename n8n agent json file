@@ -1,0 +1,398 @@
+{
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "13a6b49b-5d44-4412-b174-7728bea3e57c",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        -420,
+        -60
+      ],
+      "id": "cb465254-61ef-43cc-98ab-86276900a50b",
+      "name": "Webhook",
+      "webhookId": "13a6b49b-5d44-4412-b174-7728bea3e57c"
+    },
+    {
+      "parameters": {
+        "rules": {
+          "values": [
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "leftValue": "={{ $json.body.template }}",
+                    "rightValue": "Resume Email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals"
+                    },
+                    "id": "a81006ef-0240-4ea6-baac-4fad82f025f1"
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Resume Email"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "226aab0a-da57-469e-973b-b045bf4ada65",
+                    "leftValue": "={{ $json.body.template }}",
+                    "rightValue": "Followup Email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Followup Email"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "1114ec03-4224-475a-95c7-7833ec1c6706",
+                    "leftValue": "={{ $json.body.template }}",
+                    "rightValue": "Cold Email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Cold Email"
+            },
+            {
+              "conditions": {
+                "options": {
+                  "caseSensitive": true,
+                  "leftValue": "",
+                  "typeValidation": "strict",
+                  "version": 2
+                },
+                "conditions": [
+                  {
+                    "id": "56ba3529-5c85-4b7b-a438-b7be40c362a1",
+                    "leftValue": "={{ $json.body.template }}",
+                    "rightValue": "Reminder Email",
+                    "operator": {
+                      "type": "string",
+                      "operation": "equals",
+                      "name": "filter.operator.equals"
+                    }
+                  }
+                ],
+                "combinator": "and"
+              },
+              "renameOutput": true,
+              "outputKey": "Reminder Email"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.switch",
+      "typeVersion": 3.2,
+      "position": [
+        -240,
+        -60
+      ],
+      "id": "84a02647-95d3-4bd8-8ca3-b3b49492039b",
+      "name": "Switch"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95d06f56-79bd-4443-bf8d-cfe50f434a0c",
+              "name": "=Resume Email",
+              "value": "=Dear Hiring Team,\n\nI’m Rayyan Shaikh, a final-year Artificial Intelligence student at Hamdard University with hands-on experience in Python, computer vision, and AI automation. I’m passionate about building real-world solutions with AI, and I’m excited about the opportunity to contribute to your team.\n\nI’ve worked on various projects involving AI agents, computer vision applications, and end-to-end model deployment. My strengths lie in Python, OpenCV, and frameworks like PyTorch. I enjoy pushing boundaries through creative problem-solving and continuous learning.\n\nFeel free to check out my work:\n🔗 GitHub: https://github.com/raxor555\n🔗 LinkedIn: https://www.linkedin.com/in/rayyan-shaikh-ai/\n\nI’ve attached my resume for your review. Thank you for your time, and I look forward to the chance to connect!\n\nBest regards,\nRayyan Shaikh\n📧 rayyanshaikh1404@gmail.com | 📞 03208289281",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        -260
+      ],
+      "id": "89a01272-4385-4acb-b0f2-1d56bebb791c",
+      "name": "Resume Email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95d06f56-79bd-4443-bf8d-cfe50f434a0c",
+              "name": "=Follow Up",
+              "value": "=Hi,\n\nI hope you're doing well. Just wanted to follow up on the resume I sent recently. I'm still very enthusiastic about the possibility of working together and contributing wherever I can.\n\nPlease let me know if you need any additional details.\n\nBest regards,  \nRayyan Shaikh\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        -100
+      ],
+      "id": "6aef90e7-5604-40a6-9f13-1cc1e577b749",
+      "name": "Follow Up"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95d06f56-79bd-4443-bf8d-cfe50f434a0c",
+              "name": "=Cold Email",
+              "value": "=Hi,\n\nI hope this message finds you well. I came across your work and was genuinely impressed. I believe my background and recent experience align well with what you're doing.\n\nI've attached my resume for your consideration. I’d love to explore any opportunities where I can contribute.\n\nLooking forward to hearing from you.\n\nWarm regards,  \nRayyan Shaikh\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        40
+      ],
+      "id": "5f576fb5-8586-459f-ae3e-13e43dda2b8c",
+      "name": "Cold Email"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "95d06f56-79bd-4443-bf8d-cfe50f434a0c",
+              "name": "=Reminder Email",
+              "value": "=Hi,\n\nI know things can get quite busy, so I just wanted to check in on the resume I shared earlier. I'm really excited about the opportunity and eager to contribute with my skills and experience.\n\nLooking forward to your response.\n\nKind regards,  \nRayyan Shaikh\n",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        -20,
+        200
+      ],
+      "id": "056f0de1-5a1a-4ca6-9789-a0d684ae74ab",
+      "name": "Reminder Email"
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $('Switch').item.json.body.email }}",
+        "subject": "={{ $('Switch').item.json.body.template }}",
+        "emailType": "text",
+        "message": "={{ $json['Resume Email'] }}",
+        "options": {
+          "appendAttribution": false,
+          "attachmentsUi": {
+            "attachmentsBinary": [
+              {}
+            ]
+          }
+        }
+      },
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        400,
+        -60
+      ],
+      "id": "1b035d1a-29b1-459d-96fa-a4d3cf1098d4",
+      "name": "Gmail",
+      "webhookId": "25a8cf9f-24e1-418f-88f1-f08277dc158b",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "KPrBCRSvgpAiLReE",
+          "name": "Gmail account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "download",
+        "fileId": {
+          "__rl": true,
+          "value": "112zGIsbiwBl215HKR_XOUx9hH09gHb9S",
+          "mode": "list",
+          "cachedResultName": "Rayyan Shaikh Resume.pdf",
+          "cachedResultUrl": "https://drive.google.com/file/d/112zGIsbiwBl215HKR_XOUx9hH09gHb9S/view?usp=drivesdk"
+        },
+        "options": {
+          "binaryPropertyName": "data"
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        240,
+        -60
+      ],
+      "id": "0f29bfb6-7394-4c58-8c5f-93d86d9a8f3a",
+      "name": "Google Drive",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "pCXi6EbrwlyDQlo5",
+          "name": "Google Drive account"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Switch",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Switch": {
+      "main": [
+        [
+          {
+            "node": "Resume Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Follow Up",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Cold Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Reminder Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Resume Email": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Follow Up": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Cold Email": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Reminder Email": {
+      "main": [
+        [
+          {
+            "node": "Google Drive",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gmail": {
+      "main": [
+        []
+      ]
+    },
+    "Google Drive": {
+      "main": [
+        [
+          {
+            "node": "Gmail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "01a1b557d5ab2b3084a67e26ce593593410f9af9f239c1308552afeef083d322"
+  }
+}
